@@ -75,10 +75,10 @@ int main()
     Time currentTime(lastTime);
 
     long duckMS(0);
-    long duckCreationInterval = 1000;
-    int spaceBetweenDucks = 50;
-    long lastDuckCreationTime = duckCreationInterval;
-    int currentSpaceBetweenDucks = spaceBetweenDucks;
+    long creationinterval = 1000;
+    int space = 50;
+    long creationtime = creationinterval;
+    int currentspace = space;
     while ((arrows > 0) || drawingArrow) {
         currentTime = clock.getElapsedTime();
         Time deltaTime = currentTime - lastTime;
@@ -121,7 +121,7 @@ int main()
             window.display();
 
         }
-        if (duckMS - lastDuckCreationTime >= duckCreationInterval) {
+        if (duckMS - creationtime >= creationinterval) {
             duckMS = 0;
                 PhysicsSprite& duck = ducks.Create();
                 duck.setTexture(redTex);
@@ -144,9 +144,9 @@ int main()
                         ducks.QueueRemove(duck);
                     }
                     };
-                lastDuckCreationTime = duckMS;
+                creationtime = duckMS;
 
-                lastDuckCreationTime += currentSpaceBetweenDucks;
+                creationtime += currentspace;
         }
     }
     window.display(); // this is needed to see the last frame
